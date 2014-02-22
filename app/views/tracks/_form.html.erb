@@ -1,0 +1,34 @@
+<%= flash.now[:errors] %>
+
+<% action_url = (action == :new) ? album_tracks_url(@album) : track_url(@track)  %>
+<% method = (action == :new) ? "post" : "put"  %>
+<% button_text = (action == :new) ? "Make Track" : "Update Track"  %>
+
+<form action="<%= action_url %>" method="POST" accept-charset="utf-8">
+	
+	<input type="hidden"
+	         name="authenticity_token"
+	         value="<%= form_authenticity_token %>">
+			 
+	 
+	 <label for='track-name'>Track Title:</label>
+	 <input type='text' id='track-name' name='track[title]'>
+	 <br>
+	 
+	<input type="radio" name="track[track_type]" id="track_regular" value="Regular">
+   <label for="track_regular">Regular</label>
+   <br>
+
+<input type="radio" name="track[track_type]" id="track_bonus" value="Bonus">
+  <label for="track_bonus">Bonus</label>
+  <br>
+  
+ <input type='hidden' name='_method' value='<%= method %>'>
+ 
+ <label for='make-track-lyrics'>Track Lyrics</label>
+ <textarea id='make-track-lyrics' name='track[lyrics]'></textarea>
+ <br><br>
+	 
+			 
+	<p><input type="submit" value="<%= button_text %>"></p>
+</form>

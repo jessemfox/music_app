@@ -1,0 +1,27 @@
+
+<% action_url = (action == :new) ? bands_url : band_url(band)  %>
+<% method = (action == :new) ? "post" : "put"  %>
+<% button_text = (action == :new) ? "Make Band" : "Update Band"  %>
+
+<form action="<%= action_url %>" method="POST" accept-charset="utf-8">
+	
+	<input type="hidden"
+	         name="authenticity_token"
+	         value="<%= form_authenticity_token %>">
+			 
+			 
+	 <input type='hidden' name='_method' value='<%= method %>'>
+	 <label for='make-name'>Name</label>
+	 <input type='text' id='make-name' name='band[name]'>
+	 <br><br>
+ 
+	 <label for='make-genre'>Genre</label>
+	 <input type='text' id='make-genre' name='band[genre]'>
+	 <br><br>
+ 
+	 <label for='make-pic'>Picture</label>
+	 <input type='text' id='make-pic' name='band[band_pic_url]'>
+	 
+			 
+	<p><input type="submit" value="<%= button_text %>"></p>
+</form>

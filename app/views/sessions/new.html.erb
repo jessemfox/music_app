@@ -1,0 +1,15 @@
+<h1>Sign In</h1>
+
+<%= flash.now[:errors] %>
+
+<form action="<%= session_url %>" method="POST" accept-charset="utf-8">
+	<input type="hidden"
+	         name="authenticity_token"
+	         value="<%= form_authenticity_token %>">
+	 <label for='input_email'>Email</label>
+	 <input type='text' id="input_email" name="user[email]">
+	 
+	 <label for='input_password'>Password</label>
+	 <input type='password' id="input_password" name="user[password]">
+	<p><input type="submit" value="Sign In"></p>
+</form>

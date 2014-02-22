@@ -1,0 +1,14 @@
+<%= @band.name %>
+<%= @band.genre %>
+<% unless @band.band_pic_url == "" %>
+	<img src='<%= @band.band_pic_url %>'>
+<%end %>
+<br>
+
+<% @band.albums.each do |album| %>
+	<%= link_to album.name, album_url(album) %> <br><br>
+<% end %>
+
+<% if logged_in?  %>
+<%= link_to "Edit this band", edit_band_url(@band) %>
+<%end %>

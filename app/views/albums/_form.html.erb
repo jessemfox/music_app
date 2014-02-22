@@ -1,0 +1,30 @@
+<%= flash.now[:errors] %>
+
+<% action_url = (action == :new) ? band_albums_url(@band) : album_url(@album)  %>
+<% method = (action == :new) ? "post" : "put"  %>
+<% button_text = (action == :new) ? "Make Album" : "Update Album"  %>
+
+<form action="<%= action_url %>" method="POST" accept-charset="utf-8">
+	
+	<input type="hidden"
+	         name="authenticity_token"
+	         value="<%= form_authenticity_token %>">
+			 
+			 
+	 <input type='hidden' name='_method' value='<%= method %>'>
+	 <label for='make-name'>Name</label>
+	 <input type='text' id='make-name' name='album[name]'>
+	 <br><br>
+ 
+	 
+	<input type="radio" name="album[album_type]" id="album_studio" value="Studio">
+   <label for="album_studio">Studio</label>
+   <br>
+
+	<input type="radio" name="album[album_type]" id="album_live" value="Live">
+  <label for="album_live">Live</label>
+  <br>
+	 
+			 
+	<p><input type="submit" value="<%= button_text %>"></p>
+</form>
